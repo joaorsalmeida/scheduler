@@ -2,13 +2,6 @@ require 'rails_helper'
 
 RSpec.describe AppointmentsController, type: :controller do
 
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe "POST #create" do
     it "create valid appointment" do
       post :create, appointment: {title: "Title", date: Date.new, time: Time.new}
