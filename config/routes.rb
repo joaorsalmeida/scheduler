@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'schedule/index'
+
   resource :appointments, only: [:create, :show, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

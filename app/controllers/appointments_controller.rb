@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
 
   before_filter :load_appointment, except: :create
+
   def create
     @appointment = Appointment.new(appointment_params)
     if(@appointment.save)
