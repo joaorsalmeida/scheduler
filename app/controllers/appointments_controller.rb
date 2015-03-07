@@ -9,10 +9,13 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
+    appointment = Appointment.find(params[:id])
+    if (appointment.destroy)
+      render json: "Appointment destroyed", status: 200
+    else
+      render json: "Error destroying appointment", status: 500
+    end
   end
 
   def show
