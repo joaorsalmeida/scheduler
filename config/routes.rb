@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'appointments/new'
+
+  get 'appointments/create'
+
+  get 'appointments/edit'
+
+  get 'appointments/update'
+
+  get 'appointments/destroy'
+
+  get 'appointments/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
