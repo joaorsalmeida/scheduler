@@ -36,6 +36,7 @@ class AppointmentsController < ApplicationController
       @appointment = Appointment.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       @appointment = nil
-end
+    end
   end
+
 end
