@@ -24,8 +24,14 @@ RSpec.describe AppointmentsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      appointment = Appointment.create title: "Title", date: Date.new, time: Time.now
+      get :show, id: appointment.id
       expect(response).to have_http_status(:success)
+    end
+
+    it "return 404" do
+      get :show, id: 1
+      expect(response).to have_http_status(:not_found)
     end
   end
 
