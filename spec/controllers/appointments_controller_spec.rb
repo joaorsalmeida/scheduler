@@ -9,10 +9,15 @@ RSpec.describe AppointmentsController, type: :controller do
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
+  describe "POST #create" do
+    it "create valid appointment" do
+      post :create, appointment: {title: "Title", date: Date.new, time: Time.new}
       expect(response).to have_http_status(:success)
+    end
+
+    it "error on invalid appointment" do
+      post :create, appointment: { any: "value" }
+      expect(response).to have_http_status(:error)
     end
   end
 

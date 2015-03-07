@@ -1,11 +1,12 @@
 class AppointmentsController < ApplicationController
-  def new
-  end
 
   def create
-  end
-
-  def edit
+    @appointment = Appointment.new(appointment_params)
+    if(@appointment.save)
+      render json: @appointment
+    else
+      render json: @appointment.errors, status: 500
+    end
   end
 
   def update
@@ -15,5 +16,10 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+  end
+
+  private
+  def appointment_params
+    params.require(:appointment).permit(:title, :date, :time)
   end
 end
