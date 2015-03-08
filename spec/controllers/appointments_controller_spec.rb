@@ -4,7 +4,7 @@ RSpec.describe AppointmentsController, type: :controller do
 
   describe "POST #create" do
     it "create valid appointment" do
-      post :create, appointment: {title: "Title", date: Date.new, time: Time.new}
+      post :create, appointment: {title: "Title", date: Date.new}
       expect(response).to have_http_status(:success)
     end
 
@@ -16,7 +16,7 @@ RSpec.describe AppointmentsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "returns http success" do
-      appointment = Appointment.create title: "Title", date: Date.new, time: Time.now
+      appointment = Appointment.create title: "Title", date: Date.new
       delete :destroy, id: appointment.id
       expect(response).to have_http_status(:success)
     end
@@ -24,7 +24,7 @@ RSpec.describe AppointmentsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      appointment = Appointment.create title: "Title", date: Date.new, time: Time.now
+      appointment = Appointment.create title: "Title", date: Date.new
       get :show, id: appointment.id
       expect(response).to have_http_status(:success)
     end
