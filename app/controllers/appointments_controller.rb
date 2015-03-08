@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
 
   before_filter :load_appointment, except: :create
+  before_action :authenticate_user!
 
   def create
     @appointment = Appointment.new(appointment_params)
