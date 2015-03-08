@@ -3,11 +3,10 @@
   <h2><%= date.strftime('%A - %d/%m')%></h2>
   <% 24.times do |hour| %>
     <% appointment = find_appointment(@events, date, hour) %>
+    <%= "#{hour}:00 - #{hour + 1}:00" %>
     <% if appointment %>
-      <%= appointment.inspect %>
+      <%= render appointment %>
     <% else %>
-      <%= "#{hour}:00 - #{hour + 1}:00" %>
     <%end %>
   <% end %>
 <% end %>
-<%= @events.inspect%>
