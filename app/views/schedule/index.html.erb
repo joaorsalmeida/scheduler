@@ -1,2 +1,13 @@
-<h1>Schedule#index</h1>
-<p>Find me in app/views/schedule/index.html.erb</p>
+<h1><%= "#{@start_date.strftime('%d/%m/%Y')} to #{@end_date.strftime('%d/%m/%Y')}" %></h1>
+<% @dates.each do |date| %>
+  <h2><%= date.strftime('%A - %d/%m')%></h2>
+  <% 24.times do |hour| %>
+    <% appointment = find_appointment(@events, date, hour) %>
+    <% if appointment %>
+      <%= appointment.inspect %>
+    <% else %>
+      <%= "#{hour}:00 - #{hour + 1}:00" %>
+    <%end %>
+  <% end %>
+<% end %>
+<%= @events.inspect%>
