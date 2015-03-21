@@ -6,7 +6,6 @@ $(document).ready(function(){
 });
 
 function loadAppointmentForm(date){
-  $.get( { <%= new_appointments_path %>, { date: date })
-    .done(showAppointmentForm(result))
-  );
+  $.get( Routes.new_appointments_path(), { date: date })
+       .done(showAppointmentForm(result));
 };
