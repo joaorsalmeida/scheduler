@@ -1,7 +1,12 @@
 class AppointmentsController < ApplicationController
 
-  before_filter :load_appointment, except: :create
+  before_filter :load_appointment, except: [:new, :create]
   before_filter :authenticate_user!, except: :show
+
+  def new
+    @appointment = Appointment.new(date: params[:date])
+    render :new, layout: false
+  end
 
   def create
     @appointment = Appointment.new(appointment_params)
