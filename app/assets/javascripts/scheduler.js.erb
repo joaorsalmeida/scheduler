@@ -1,0 +1,12 @@
+$(document).ready(function(){
+  $(".create-appointment").on("click", function(){
+    date = $(this).data("date");
+    loadAppointmentForm(date);
+  });
+});
+
+function loadAppointmentForm(date){
+  $.get( { <%= new_appointments_path %>, { date: date })
+    .done(showAppointmentForm(result))
+  );
+};
