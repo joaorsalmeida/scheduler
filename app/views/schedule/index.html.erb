@@ -7,7 +7,9 @@
     <% if appointment %>
       <%= render appointment %>
     <% else %>
-      <a class="create-appointment" href="#" data-date="<%= DateTime.new(date.year, date.month, date.day, hour) %>">Create appointment</a>
+      <a class="create-appointment" href="#" data-date="<%= DateTime.new(date.year, date.month, date.day, hour)%>" data-toggle="modal" data-target="#appointmentModal">Create appointment</a>
     <%end %>
   <% end %>
 <% end %>
+
+<%= render partial: "appointments/modal" %>

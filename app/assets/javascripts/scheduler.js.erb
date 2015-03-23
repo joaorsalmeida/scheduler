@@ -1,16 +1,13 @@
 $(document).ready(function(){
-  $(".create-appointment").on("click", function(){
-    date = $(this).data("date");
-    loadAppointmentForm(date);
+
+  $('#appointmentModal').on('show.bs.modal', function (event) {
+    var link = $(event.relatedTarget);
+    var date = link.data('date');
+    var modal = $(this);
+    $.get( Routes.new_appointment_path({date: date}))
+    .done(function(data){
+      modal.find('.modal-body').html(data)
+    });
   });
+
 });
-
-function loadAppointmentForm(date){
-  $.get( Routes.new_appointments_path(), { date: date })
-  .done(function(data){
-    showAppointmentForm(data);
-  });
-};
-
-function showAppointmentForm(data){
-};

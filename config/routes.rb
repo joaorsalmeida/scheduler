@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'schedule/index'
 
-  resource :appointments, only: [:new, :create, :show, :destroy]
+  resources :appointments, except: [:index, :edit, :update]
 
   root 'schedule#index'
 end

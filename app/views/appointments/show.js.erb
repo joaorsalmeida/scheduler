@@ -1,0 +1,3 @@
+$('#appointmentModal').modal('close');
+var date = <%= @appointment.date %>;
+$(".create-appointment[data-date=" + date + "]").hide();
