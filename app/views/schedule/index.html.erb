@@ -7,8 +7,9 @@
     <% if appointment %>
       <%= render appointment %>
     <% else %>
+      <% appointment_date = format_date DateTime.new(date.year, date.month, date.day, hour) %>
       <div>
-        <a class="create-appointment" href="#" data-date="<%= format_date DateTime.new(date.year, date.month, date.day, hour)%>" data-toggle="modal" data-target="#appointmentModal">Create appointment</a>
+        <a class="create-appointment <%= check_disabled %>" href="#" data-date="<%= appointment_date %>" data-toggle="modal" data-target="#appointmentModal"> Create appointment</a>
       </div>
     <%end %>
   <% end %>

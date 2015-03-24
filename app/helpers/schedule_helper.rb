@@ -6,4 +6,8 @@ module ScheduleHelper
   def format_date(date)
     date.strftime('%Y-%m-%dT%H:%M:%S')
   end
+
+  def check_disabled
+    "disabled" unless user_signed_in?
+  end
 end
