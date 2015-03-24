@@ -1,3 +1,4 @@
-$('#appointmentModal').modal('close');
-var date = <%= @appointment.date %>;
-$(".create-appointment[data-date=" + date + "]").hide();
+$('#appointmentModal').modal('hide');
+var date = "<%= @appointment.date.strftime('%Y-%m-%dT%H:%M:%S') %>";
+var link = $(".create-appointment[data-date='" + date + "']");
+link.parent().html("<%= j render partial: 'appointment', locals: {appointment: @appointment } %>");
