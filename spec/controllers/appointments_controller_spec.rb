@@ -48,7 +48,9 @@ RSpec.describe AppointmentsController, type: :controller do
 
     describe "DELETE #destroy" do
       it "returns http success" do
-        appointment = Appointment.create(appointment_params)
+        appointment = Appointment.new(appointment_params)
+        appointment.user = user
+        appointment.save!
         delete :destroy, id: appointment.id
         expect(response).to have_http_status(302)
       end
@@ -66,7 +68,7 @@ RSpec.describe AppointmentsController, type: :controller do
     end
 
     it "return 404" do
-      get :show, id: 1
+      get :show, id: 666
       expect(response).to have_http_status(:not_found)
     end
   end

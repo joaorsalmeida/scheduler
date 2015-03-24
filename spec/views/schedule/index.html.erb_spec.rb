@@ -7,6 +7,7 @@ RSpec.describe "schedule/index.html.erb", type: :view do
       assign :end_date, DateTime.new(2013, 5, 3)
       assign :dates, [DateTime.new(2013,5,1), DateTime.new(2013,5,2), DateTime.new(2013,5,3)]
       assign :events, [Appointment.new({ title: "Titulo", date: DateTime.new(2013,5,2,10,0) })]
+      allow(view).to receive(:check_disabled).and_return(false)
       render
       expect(rendered).to include "Titulo"
     end

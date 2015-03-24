@@ -12,12 +12,10 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-    respond_to do |format|
-      if(@appointment.save)
-        format.js { render action: 'show', status: :created, location: @appointment }
-      else
-        format.js { render json: @appointment.errors, status: 500 }
-      end
+    if(@appointment.save)
+      render action: 'show', status: :created, location: @appointment
+    else
+      render json: @appointment.errors, status: 500
     end
   end
 
@@ -30,6 +28,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    render json: "Appointment not found", status: :not_found unless @appointment
   end
 
   private
